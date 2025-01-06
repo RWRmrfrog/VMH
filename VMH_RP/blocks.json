@@ -1,0 +1,414 @@
+{
+    "format_version": "1.21.40",
+    "vmh:aggressive_panda_head_block": {
+        "sound": "stone"
+    },
+    "vmh:allay_head_block": {
+        "sound": "stone"
+    },
+    "vmh:angry_ashen_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:angry_bee_head_block": {
+        "sound": "stone"
+    },
+    "vmh:angry_black_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:angry_chestnut_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:angry_pale_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:angry_rusty_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:angry_snowy_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:angry_spotted_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:angry_striped_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:angry_woods_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:arctic_fox_head_block": {
+        "sound": "stone"
+    },
+    "vmh:armadillo_head_block": {
+        "sound": "stone"
+    },
+    "vmh:ashen_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:bat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:bee_head_block": {
+        "sound": "stone"
+    },
+    "vmh:black_cat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:black_horse_head_block": {
+        "sound": "stone"
+    },
+    "vmh:black_rabbit_head_block": {
+        "sound": "stone"
+    },
+    "vmh:black_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:blaze_head_block": {
+        "sound": "stone"
+    },
+    "vmh:blue_axolotl_head_block": {
+        "sound": "stone"
+    },
+    "vmh:blue_parrot_head_block": {
+        "sound": "stone"
+    },
+    "vmh:blue_wither_head_block": {
+        "sound": "stone"
+    },
+    "vmh:blue_wither_projectile_head_block": {
+        "sound": "stone"
+    },
+    "vmh:bogged_head_block": {
+        "sound": "stone"
+    },
+    "vmh:breeze_head_block": {
+        "sound": "stone"
+    },
+    "vmh:british_cat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:brown_horse_head_block": {
+        "sound": "stone"
+    },
+    "vmh:brown_llama_head_block": {
+        "sound": "stone"
+    },
+    "vmh:brown_mooshroom_head_block": {
+        "sound": "stone"
+    },
+    "vmh:brown_panda_head_block": {
+        "sound": "stone"
+    },
+    "vmh:brown_rabbit_head_block": {
+        "sound": "stone"
+    },
+    "vmh:calico_cat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:camel_head_block": {
+        "sound": "stone"
+    },
+    "vmh:cave_spider_head_block": {
+        "sound": "stone"
+    },
+    "vmh:chestnut_horse_head_block": {
+        "sound": "stone"
+    },
+    "vmh:chestnut_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:chicken_head_block": {
+        "sound": "stone"
+    },
+    "vmh:cod_head_block": {
+        "sound": "stone"
+    },
+    "vmh:cold_frog_head_block": {
+        "sound": "stone"
+    },
+    "vmh:cow_head_block": {
+        "sound": "stone"
+    },
+    "vmh:creaking_head_block": {
+        "sound": "stone"
+    },
+    "vmh:creamy_horse_head_block": {
+        "sound": "stone"
+    },
+    "vmh:creamy_llama_head_block": {
+        "sound": "stone"
+    },
+    "vmh:cyan_axolotl_head_block": {
+        "sound": "stone"
+    },
+    "vmh:cyan_parrot_head_block": {
+        "sound": "stone"
+    },
+    "vmh:dark_brown_horse_head_block": {
+        "sound": "stone"
+    },
+    "vmh:desert_rabbit_head_block": {
+        "sound": "stone"
+    },
+    "vmh:dolphin_head_block": {
+        "sound": "stone"
+    },
+    "vmh:donkey_head_block": {
+        "sound": "stone"
+    },
+    "vmh:drowned_head_block": {
+        "sound": "stone"
+    },
+    "vmh:elder_guardian_head_block": {
+        "sound": "stone"
+    },
+    "vmh:enderman_head_block": {
+        "sound": "stone"
+    },
+    "vmh:endermite_head_block": {
+        "sound": "stone"
+    },
+    "vmh:evoker_head_block": {
+        "sound": "stone"
+    },
+    "vmh:fox_head_block": {
+        "sound": "stone"
+    },
+    "vmh:ghast_head_block": {
+        "sound": "stone"
+    },
+    "vmh:glow_squid_head_block": {
+        "sound": "stone"
+    },
+    "vmh:goat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:gold_axolotl_head_block": {
+        "sound": "stone"
+    },
+    "vmh:gray_horse_head_block": {
+        "sound": "stone"
+    },
+    "vmh:gray_llama_head_block": {
+        "sound": "stone"
+    },
+    "vmh:gray_parrot_head_block": {
+        "sound": "stone"
+    },
+    "vmh:green_parrot_head_block": {
+        "sound": "stone"
+    },
+    "vmh:guardian_head_block": {
+        "sound": "stone"
+    },
+    "vmh:hoglin_head_block": {
+        "sound": "stone"
+    },
+    "vmh:husk_head_block": {
+        "sound": "stone"
+    },
+    "vmh:iron_golem_head_block": {
+        "sound": "stone"
+    },
+    "vmh:jellie_cat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:lazy_panda_head_block": {
+        "sound": "stone"
+    },
+    "vmh:lucy_axolotl_head_block": {
+        "sound": "stone"
+    },
+    "vmh:magma_cube_head_block": {
+        "sound": "stone"
+    },
+    "vmh:mooshroom_head_block": {
+        "sound": "stone"
+    },
+    "vmh:mule_head_block": {
+        "sound": "stone"
+    },
+    "vmh:ocelot_head_block": {
+        "sound": "stone"
+    },
+    "vmh:pale_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:panda_head_block": {
+        "sound": "stone"
+    },
+    "vmh:persian_cat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:phantom_head_block": {
+        "sound": "stone"
+    },
+    "vmh:pig_head_block": {
+        "sound": "stone"
+    },
+    "vmh:piglin_brute_head_block": {
+        "sound": "stone"
+    },
+    "vmh:pillager_head_block": {
+        "sound": "stone"
+    },
+    "vmh:playful_panda_head_block": {
+        "sound": "stone"
+    },
+    "vmh:polar_bear_head_block": {
+        "sound": "stone"
+    },
+    "vmh:pufferfish_head_block": {
+        "sound": "stone"
+    },
+    "vmh:ragdoll_cat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:ravager_head_block": {
+        "sound": "stone"
+    },
+    "vmh:red_cat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:red_parrot_head_block": {
+        "sound": "stone"
+    },
+    "vmh:rusty_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:salmon_head_block": {
+        "sound": "stone"
+    },
+    "vmh:salt_rabbit_head_block": {
+        "sound": "stone"
+    },
+    "vmh:sheep_head_block": {
+        "sound": "stone"
+    },
+    "vmh:shulker_head_block": {
+        "sound": "stone"
+    },
+    "vmh:siamese_cat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:silverfish_head_block": {
+        "sound": "stone"
+    },
+    "vmh:skeleton_horse_head_block": {
+        "sound": "stone"
+    },
+    "vmh:slime_head_block": {
+        "sound": "stone"
+    },
+    "vmh:sniffer_head_block": {
+        "sound": "stone"
+    },
+    "vmh:snow_golem_head_block": {
+        "sound": "stone"
+    },
+    "vmh:snowy_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:spider_head_block": {
+        "sound": "stone"
+    },
+    "vmh:splotched_rabbit_head_block": {
+        "sound": "stone"
+    },
+    "vmh:spotted_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:squid_head_block": {
+        "sound": "stone"
+    },
+    "vmh:stray_head_block": {
+        "sound": "stone"
+    },
+    "vmh:strider_head_block": {
+        "sound": "stone"
+    },
+    "vmh:striped_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:suffocated_strider_head_block": {
+        "sound": "stone"
+    },
+    "vmh:tabby_cat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:tadpole_head_block": {
+        "sound": "stone"
+    },
+    "vmh:tropical_fish_head_block": {
+        "sound": "stone"
+    },
+    "vmh:temperate_frog_head_block": {
+        "sound": "stone"
+    },
+    "vmh:turtle_head_block": {
+        "sound": "stone"
+    },
+    "vmh:tuxedo_cat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:vex_head_block": {
+        "sound": "stone"
+    },
+    "vmh:villager_head_block": {
+        "sound": "stone"
+    },
+    "vmh:vindicator_head_block": {
+        "sound": "stone"
+    },
+    "vmh:wandering_trader_head_block": {
+        "sound": "stone"
+    },
+    "vmh:warden_head_block": {
+        "sound": "stone"
+    },
+    "vmh:warm_frog_head_block": {
+        "sound": "stone"
+    },
+    "vmh:weak_panda_head_block": {
+        "sound": "stone"
+    },
+    "vmh:white_cat_head_block": {
+        "sound": "stone"
+    },
+    "vmh:white_horse_head_block": {
+        "sound": "stone"
+    },
+    "vmh:white_llama_head_block": {
+        "sound": "stone"
+    },
+    "vmh:white_rabbit_head_block": {
+        "sound": "stone"
+    },
+    "vmh:wild_axolotl_head_block": {
+        "sound": "stone"
+    },
+    "vmh:witch_head_block": {
+        "sound": "stone"
+    },
+    "vmh:wither_head_block": {
+        "sound": "stone"
+    },
+    "vmh:wither_projectile_head_block": {
+        "sound": "stone"
+    },
+    "vmh:woods_wolf_head_block": {
+        "sound": "stone"
+    },
+    "vmh:worried_panda_head_block": {
+        "sound": "stone"
+    },
+    "vmh:zoglin_head_block": {
+        "sound": "stone"
+    },
+    "vmh:zombie_villager_head_block": {
+        "sound": "stone"
+    },
+    "vmh:zombified_piglin_head_block": {
+        "sound": "stone"
+    }
+}

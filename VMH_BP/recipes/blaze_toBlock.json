@@ -1,0 +1,29 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "vmh:blaze_head_block"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "group": "itemGroup.name.skull",
+        "pattern": [
+            "#"
+        ],
+        "key": {
+            "#": {
+                "item": "vmh:blaze_head"
+            }
+        },
+        "unlock": [
+            {
+                "item": "vmh:blaze_head"
+            }
+        ],
+        "result": {
+            "item": "vmh:blaze_head_block",
+            "count": 1
+        }
+    }
+}

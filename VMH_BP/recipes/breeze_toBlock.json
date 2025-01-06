@@ -1,0 +1,29 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "vmh:breeze_head_block"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "group": "itemGroup.name.skull",
+        "pattern": [
+            "#"
+        ],
+        "key": {
+            "#": {
+                "item": "vmh:breeze_head"
+            }
+        },
+        "unlock": [
+            {
+                "item": "vmh:breeze_head"
+            }
+        ],
+        "result": {
+            "item": "vmh:breeze_head_block",
+            "count": 1
+        }
+    }
+}

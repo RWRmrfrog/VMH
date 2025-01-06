@@ -1,0 +1,29 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "vmh:gold_axolotl_head_block"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "group": "itemGroup.name.skull",
+        "pattern": [
+            "#"
+        ],
+        "key": {
+            "#": {
+                "item": "vmh:gold_axolotl_head"
+            }
+        },
+        "unlock": [
+            {
+                "item": "vmh:gold_axolotl_head"
+            }
+        ],
+        "result": {
+            "item": "vmh:gold_axolotl_head_block",
+            "count": 1
+        }
+    }
+}

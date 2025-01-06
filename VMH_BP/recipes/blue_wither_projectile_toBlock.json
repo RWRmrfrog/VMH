@@ -1,0 +1,29 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "vmh:blue_wither_projectile_head_block"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "group": "itemGroup.name.skull",
+        "pattern": [
+            "#"
+        ],
+        "key": {
+            "#": {
+                "item": "vmh:blue_wither_projectile_head"
+            }
+        },
+        "unlock": [
+            {
+                "item": "vmh:blue_wither_projectile_head"
+            }
+        ],
+        "result": {
+            "item": "vmh:blue_wither_projectile_head_block",
+            "count": 1
+        }
+    }
+}

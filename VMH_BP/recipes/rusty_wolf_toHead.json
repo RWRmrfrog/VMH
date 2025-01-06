@@ -1,0 +1,29 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "vmh:rusty_wolf_head"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "group": "itemGroup.name.skull",
+        "pattern": [
+            "#"
+        ],
+        "key": {
+            "#": {
+                "item": "vmh:rusty_wolf_head_block"
+            }
+        },
+        "unlock": [
+            {
+                "item": "vmh:rusty_wolf_head_block"
+            }
+        ],
+        "result": {
+            "item": "vmh:rusty_wolf_head",
+            "count": 1
+        }
+    }
+}

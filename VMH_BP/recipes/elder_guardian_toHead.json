@@ -1,0 +1,29 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "vmh:elder_guardian_head"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "group": "itemGroup.name.skull",
+        "pattern": [
+            "#"
+        ],
+        "key": {
+            "#": {
+                "item": "vmh:elder_guardian_head_block"
+            }
+        },
+        "unlock": [
+            {
+                "item": "vmh:elder_guardian_head_block"
+            }
+        ],
+        "result": {
+            "item": "vmh:elder_guardian_head",
+            "count": 1
+        }
+    }
+}
