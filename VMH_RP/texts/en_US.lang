@@ -268,7 +268,7 @@ item.vmh:ravager_head=Ravager Head
 tile.vmh:red_cat_head_block.name=Red Tabby Cat Head
 item.vmh:red_cat_head=Red Tabby Cat Head
 
-tile.vmh:red_parrot_block.name=Red Parrot Head
+tile.vmh:red_parrot_head_block.name=Red Parrot Head
 item.vmh:red_parrot_head=Red Parrot Head
 
 tile.vmh:rusty_wolf_head_block.name=Rusty Wolf Head

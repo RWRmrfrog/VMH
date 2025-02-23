@@ -2,7 +2,7 @@
     "format_version": "1.10",
     "minecraft:item": {
         "description": {
-            "identifier": "vmh:allay_head_block",
+            "identifier": "vmh:chestnut_wolf_head_block",
             "category": "null"
         },
         "components": {
