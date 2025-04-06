@@ -1,8 +1,9 @@
 import { world, system, ItemStack } from "@minecraft/server";
 
 const blockMap = new Map();
+const chargedCreepers = new Map();
 
-const mobHeadArray = [
+const headArray = [
     //[item identifier, block identifier, block tag, sound]
     ["vmh:aggressive_panda_head", "vmh:aggressive_panda_head_block", "aggressive_panda_head", "mob.panda.idle.aggressive"],
     ["vmh:allay_head", "vmh:allay_head_block", "allay_head", "mob.allay.idle"],
@@ -143,7 +144,16 @@ const mobHeadArray = [
     ["vmh:zombified_piglin_head", "vmh:zombified_piglin_head_block", "zombified_piglin_head", "mob.zombiepig.zpig"],
 ];
 
-/** @param {number} playerYRotation */
+function runCommand(command) {
+    system.run(() => {
+        world.getDimension("overworld").runCommand(command);
+    });
+}
+
+/* 
+    Block Rotation
+*/
+
 function getPreciseRotation(playerYRotation) {
     if (playerYRotation < 0) playerYRotation += 360;
     const rotation = Math.round(playerYRotation / 22.5);
@@ -151,7 +161,6 @@ function getPreciseRotation(playerYRotation) {
     return rotation !== 16 ? rotation : 0;
 };
 
-/** @type {import("@minecraft/server").BlockCustomComponent} */
 const RotationBlockComponent = {
     beforeOnPlayerPlace(event) {
         const { player } = event;
@@ -167,13 +176,11 @@ const RotationBlockComponent = {
     }
 };
 
-function spawnLoot(command) {
-    system.run(() => {
-        world.getDimension("overworld").runCommand(command);
-    });
-}
+/* 
+    Noteblock Functionality
+*/
 
-//redstone power
+//Redstone power
 world.beforeEvents.worldInitialize.subscribe(eventData =>{eventData.blockComponentRegistry.registerCustomComponent('vmh:check_noteblock', {
     onTick(event) { 
     const block = event.block;
@@ -186,9 +193,9 @@ world.beforeEvents.worldInitialize.subscribe(eventData =>{eventData.blockCompone
 
     if (blockBelow.typeId == "minecraft:noteblock" && currentRedstonePower > 0 && currentRedstonePower != previousRedstonePower) {
         const location = blockBelow.location;
-        for (let i = 0; i < mobHeadArray.length; i++) {
-            if (block.typeId == mobHeadArray[i][1]) {
-                world.playSound(mobHeadArray[i][3], location)
+        for (let i = 0; i < headArray.length; i++) {
+            if (block.typeId == headArray[i][1]) {
+                world.playSound(headArray[i][3], location)
                 break;
             }
         }
@@ -211,9 +218,9 @@ world.afterEvents.playerInteractWithBlock.subscribe((eventData) => {
       const blockAbove = block.dimension.getBlock({ x: block.location.x, y: (block.location.y) + 1, z: block.location.z });
       if (block.typeId == "minecraft:noteblock") {
           const location = block.location;
-          for (let i = 0; i < mobHeadArray.length; i++) {
-              if (blockAbove.typeId == mobHeadArray[i][1]) {
-                  world.playSound(mobHeadArray[i][3], location)
+          for (let i = 0; i < headArray.length; i++) {
+              if (blockAbove.typeId == headArray[i][1]) {
+                  world.playSound(headArray[i][3], location)
                   break;
               }
           }
@@ -230,18 +237,6 @@ world.beforeEvents.entityRemove.subscribe(({ removedEntity }) => {
     if (removedEntity.typeId === "minecraft:creaking") {
         const {x, y, z} = removedEntity.location;
         const command = `loot spawn ${x} ${y} ${z} loot \"entities/creaking\"`;
-        spawnLoot(command);
+        runCommand(command);
     }
 })
-
-//Could be used later to detect noteblock instead
-
-// world.beforeEvents.playerPlaceBlock.subscribe((event) => {
-//     const player = event.source;
-//     if (event.permutationBeingPlaced.type.id === "minecraft:bedrock") {
-//         event.cancel = true;
-//         system.run(() => {
-//             player.sendMessage("You cannot place Bedrock");
-//         });
-//     }
-// });
