@@ -98,7 +98,7 @@
             "textures": "textures/entity/llama/llama_brown"
         },
         "brown_mooshroom_head": {
-            "textures": "textures/entity/cow/brown_mooshroom"
+            "textures": "textures/entity/cow/brown_mooshroom_v2"
         },
         "brown_panda_head": {
             "textures": "textures/entity/panda/panda_brown"
@@ -122,16 +122,25 @@
             "textures": "textures/entity/wolf/wolf_chestnut"
         },
         "chicken_head": {
-            "textures": "textures/entity/chicken"
+            "textures": "textures/entity/chicken/chicken"
         },
         "cod_head": {
             "textures": "textures/entity/fish/cod"
         },
+        "cold_chicken_head": {
+            "textures": "textures/entity/chicken/chicken_cold"
+        },
+        "cold_cow_head": {
+            "textures": "textures/entity/cow/cow_cold"
+        },
         "cold_frog_head": {
             "textures": "textures/entity/frog/cold_frog"
         },
+        "cold_pig_head": {
+            "textures": "textures/entity/pig/pig_cold"
+        },
         "cow_head": {
-            "textures": "textures/entity/cow/cow"
+            "textures": "textures/entity/cow/cow_v2"
         },
         "creaking_head": {
             "textures": "textures/entity/creaking/creaking"
@@ -227,7 +236,7 @@
             "textures": "textures/blocks/skulls/magma_cube"
         },
         "mooshroom_head": {
-            "textures": "textures/entity/cow/mooshroom"
+            "textures": "textures/entity/cow/mooshroom_v2"
         },
         "mule_head": {
             "textures": "textures/blocks/skulls/horse2/mule"
@@ -248,7 +257,7 @@
             "textures": "textures/blocks/skulls/phantom"
         },
         "pig_head": {
-            "textures": "textures/entity/pig/pig"
+            "textures": "textures/entity/pig/pig_v3"
         },
         "piglin_brute_head": {
             "textures": "textures/entity/piglin/piglin_brute"
@@ -370,8 +379,17 @@
         "warden_head": {
             "textures": "textures/entity/warden/warden"
         },
+        "warm_chicken_head": {
+            "textures": "textures/entity/chicken/chicken_warm"
+        },
+        "warm_cow_head": {
+            "textures": "textures/entity/cow/cow_warm"
+        },
         "warm_frog_head": {
             "textures": "textures/entity/frog/warm_frog"
+        },
+        "warm_pig_head": {
+            "textures": "textures/entity/pig/pig_warm"
         },
         "weak_panda_head": {
             "textures": "textures/entity/panda/panda_sneezy"

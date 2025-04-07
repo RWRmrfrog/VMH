@@ -8,7 +8,7 @@
                 "enchanted": "armor_enchanted"
             },
             "textures": {
-                "default": "textures/entity/chicken",
+                "default": "textures/entity/chicken/chicken",
                 "enchanted": "textures/misc/enchanted_item_glint"
             },
             "geometry": {
