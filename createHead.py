@@ -4,31 +4,6 @@ import re
 
 # Template Registry (Mapping template types to their structures and paths)
 TEMPLATE_REGISTRY = {
-    "attachable": {
-        "template": {
-            "format_version": "1.10.0",
-            "minecraft:attachable": {
-                "description": {
-                    "identifier": "vmh:[lower custom name]_head", 
-                    "materials": {
-                        "default": "armor",
-                        "enchanted": "armor_enchanted"
-                    },
-                    "textures": {
-                        "default": "textures/blocks/skulls/[custom name]",
-                        "enchanted": "textures/misc/enchanted_item_glint"
-                    },
-                    "geometry": {
-                        "default": "geometry.[custom model name]_attachable"
-                    },
-                    "render_controllers": [
-                        "controller.render.item_default"
-                    ]
-                }
-            }
-        },
-        "file_path": "VMH_RP/attachables/[lower custom name]_head.json"
-    },
     "items_rp": {
         "template": {
             "format_version": "1.10",
@@ -475,7 +450,6 @@ def main():
         model_name = data["model"] if data["model"] else "head"
 
         update_index_js(head_name, sound_name)
-        create_json_from_template("attachable", head_name, model_name)
         create_json_from_template("items_rp", head_name)
         create_json_from_template("items_bp", head_name)
         create_json_from_template("block", head_name, model_name)

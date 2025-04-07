@@ -124,7 +124,7 @@ cod_head
 Cold_Frog
 mob.frog.ambient
 frog_head
-Cow_Head
+Cow
 mob.cow.say
 cow_head
 Creaking
@@ -307,9 +307,9 @@ head
 Snowy_Wolf
 mob.wolf.bark
 wolf_head
-Spider_Head
+Spider
 mob.spider.say
-spider_head
+head
 Splotched_Rabbit
 mob.rabbit.hurt
 rabbit_head
@@ -360,7 +360,7 @@ mob.vindicator.idle
 villager_head
 Wandering_Trader
 mob.wanderingtrader.idle
-vilalger_head
+villager_head
 Warden
 mob.warden.idle
 warden_head
