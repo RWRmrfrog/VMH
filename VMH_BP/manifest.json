@@ -4,14 +4,14 @@
         "min_engine_version": [
             1,
             21,
-            60
+            70
         ],
         "name": "Vanilla Mob Heads (VMH)",
         "description": "by RWRmrfrog",
         "uuid": "af587322-a7fd-4b88-872d-ab9b3f9c24b3",
         "version": [
             1,
-            1,
+            2,
             0
         ]
     },
@@ -21,7 +21,7 @@
             "uuid": "14014607-9518-4edc-b889-cbe236be69e9",
             "version": [
                 1,
-                1,
+                2,
                 0
             ]
         },
@@ -32,7 +32,7 @@
             "uuid": "5923e537-f00d-4996-a5bc-5b524adc05a6",
             "version": [
                 1,
-                1,
+                2,
                 0
             ]
         }
@@ -42,13 +42,13 @@
             "uuid": "c93d28b9-24af-41b5-9c5f-3fadeda9e1f9",
             "version": [
                 1,
-                1,
+                2,
                 0
             ]
         },
         {
             "module_name": "@minecraft/server",
-            "version": "1.17.0"
+            "version": "1.18.0"
         }
     ]
 }

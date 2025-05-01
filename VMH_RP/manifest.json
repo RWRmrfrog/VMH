@@ -4,14 +4,14 @@
         "min_engine_version": [
             1,
             21,
-            60
+            70
         ],
         "name": "Vanilla Mob Heads (VMH)",
         "description": "by RWRmrfrog",
         "uuid": "c93d28b9-24af-41b5-9c5f-3fadeda9e1f9",
         "version": [
             1,
-            1,
+            2,
             0
         ]
     },
@@ -21,7 +21,7 @@
             "uuid": "f56172d9-a3cc-462f-a0ef-ce805e2d8a98",
             "version": [
                 1,
-                1,
+                2,
                 0
             ]
         }
@@ -31,7 +31,7 @@
             "uuid": "af587322-a7fd-4b88-872d-ab9b3f9c24b3",
             "version": [
                 1,
-                1,
+                2,
                 0
             ]
         }
