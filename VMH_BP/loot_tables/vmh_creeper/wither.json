@@ -1,0 +1,29 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "vmh:wither_head_block",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "vmh:blue_wither_head_block",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "vmh:wither_projectile_head_block",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "vmh:blue_wither_projectile_head_block",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

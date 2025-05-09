@@ -5,7 +5,8 @@
       "entries": [
         {
           "type": "item",
-          "name": "vmh:charged_creeper_head"
+          "name": "vmh:angry_spotted_wolf_head_block",
+          "weight": 1
         }
       ],
       "conditions": [

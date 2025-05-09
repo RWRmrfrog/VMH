@@ -1,0 +1,14 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "vmh:black_cat_head_block",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

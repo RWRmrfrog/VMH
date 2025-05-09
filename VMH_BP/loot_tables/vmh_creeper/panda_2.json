@@ -1,0 +1,14 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "vmh:worried_panda_head_block",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

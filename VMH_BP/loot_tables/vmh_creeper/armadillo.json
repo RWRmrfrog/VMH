@@ -1,0 +1,14 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "vmh:armadillo_head_block",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

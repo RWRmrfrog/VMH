@@ -1,26 +1,46 @@
 import { world, system, ItemStack } from "@minecraft/server";
 
+/* 
+    Arrays
+*/
+
 const blockMap = new Map();
 const chargedCreepers = new Map();
-const oddballs = [
-    // "minecraft:bee",
-    "minecraft:chicken",
-    "minecraft:cow",
-    "minecraft:pig",
-    // "minecraft:strider",
+const AngryMobs = new Map();
+const blacklistMobs = [
+    "minecraft:player",
+    "minecraft:wither_skeleton",
+    "minecraft:snowball",
+    "minecraft:ender_eye",
+    "minecraft:ender_pearl",
+    "minecraft:splash_potion",
+    "minecraft:xp_bottle",
+    "minecraft:fireball",
+    "minecraft:dragon_fireball",
+    "minecraft:egg"
+];
+const variantMobs = [
     "minecraft:wolf",
     "minecraft:cat",
     "minecraft:fox",
     "minecraft:horse",
     "minecraft:llama",
-    // "minecraft:trader_llama",
+    "minecraft:trader_llama",
     "minecraft:mooshroom",
     "minecraft:panda",
     "minecraft:parrot",
     "minecraft:rabbit",
     "minecraft:frog",
     "minecraft:axolotl"
-]
+];
+const vanillaHeads = [
+    "minecraft:creeper",
+    "minecraft:skeleton",
+    "minecraft:zombie",
+    "minecraft:wither_skeleton",
+    "minecraft:piglin",
+    "minecraft:ender_dragon"
+];
 const headArray = [
     ["vmh:aggressive_panda_head", "vmh:aggressive_panda_head_block", "aggressive_panda_head", "mob.panda.idle.aggressive"],
     ["vmh:allay_head", "vmh:allay_head_block", "allay_head", "mob.allay.idle"],
@@ -174,13 +194,13 @@ function runCommand(command) {
 }
 
 /* 
-    Track Charged Creepers & Spawn Creaking Head
+    Track Charged Creepers, Angry Mobs, and Spawn Creaking Head
 */
 
 world.beforeEvents.entityRemove.subscribe(({ removedEntity }) => {
     if (removedEntity.typeId == "minecraft:creeper" && removedEntity.getComponent('is_charged')) 
     {
-        chargedCreepers.set(removedEntity.id, true)
+        chargedCreepers.set(removedEntity.id, true);
     } 
     if (removedEntity.typeId === "minecraft:creaking") {
         const {x, y, z} = removedEntity.location;
@@ -189,35 +209,89 @@ world.beforeEvents.entityRemove.subscribe(({ removedEntity }) => {
     }
 })
 
+world.afterEvents.entityHurt.subscribe((event) => {
+    const {hurtEntity, damageSource, damage} = event;
+    if ((hurtEntity.typeId == "minecraft:wolf" || hurtEntity.typeId == "minecraft:bee") && hurtEntity.getComponent("health").currentValue >= damage && damageSource.damagingEntity.typeId == "minecraft:player") {
+        AngryMobs.set(hurtEntity.id, true);
+    } 
+})
+
 /* 
     Mobs Drop Heads
 */
 
 world.afterEvents.entityDie.subscribe((event) => {
     const {damageSource, deadEntity} = event;
+    const damagingEntity = damageSource.damagingEntity;
+
+    if (blacklistMobs.includes(deadEntity.typeId)) { return; };
 
     const deadEntitySplit = deadEntity.typeId.split(":");
     let entity = deadEntitySplit[1];
     let tableLocation = "vmh_looting";
 
-    if (deadEntity.typeId != "minecraft:player" && chargedCreepers.has(damageSource.id))
+    entity = modEntityName(deadEntity, entity);
+
+    // Drop 100% rate if killed by charged creeper
+
+    if (chargedCreepers.has(damagingEntity.id))
     {
-        chargedCreepers.delete(damageSource.id);  
-        tableLocation = "vmh_creeper"
+        chargedCreepers.delete(damagingEntity.id);  
+        tableLocation = "vmh_creeper";
     }
 
-    if (deadEntity.typeId == "minecraft:frog" || deadEntity.typeId == "minecraft:axolotl") 
+    if (!(tableLocation == "vmh_creeper" && vanillaHeads.includes(deadEntity.typeId)))
     {
-        const variant = deadEntity.getComponent('minecraft:variant');
-        entity += `_${variant.value}`
+        const {x, y, z} = deadEntity.location;
+        const command = `loot spawn ${x} ${y + 0.5} ${z} loot \"${tableLocation}/${entity}\"`;
+        runCommand(command);
+
+        console.warn(`${command}`);
     }
-
-    const {x, y, z} = deadEntity.location;
-    const command = `loot spawn ${x} ${y + 0.5} ${z} loot \"${tableLocation}/${entity}\"`;
-    runCommand(command);
-
-    console.warn(`${command}`);
 });
+
+function modEntityName(deadEntity, entity) {
+    if (deadEntity.typeId == "minecraft:creeper" && deadEntity.getComponent('is_charged')) {
+        entity = "charged_creeper";
+    }
+    else if (deadEntity.typeId == "minecraft:trader_llama") {
+        entity = "llama";
+    }
+    else if (deadEntity.typeId == "minecraft:strider" && deadEntity.getComponent('is_shaking')) {
+        entity = "suffocated_strider";
+    }
+    else if (deadEntity.typeId == "minecraft:sheep") {
+        const color = deadEntity.getComponent('color');
+        entity += `_${color.value}`;
+    }
+
+    // Add Angry
+    
+    if (AngryMobs.has(deadEntity.id)) {
+        AngryMobs.delete(deadEntity.id);
+        entity = "angry_" + entity;
+    }
+
+    // Append Variant Number
+
+    if (variantMobs.includes(deadEntity.typeId)) {
+        const variant = deadEntity.getComponent('variant');
+        if (!variant)
+        {
+            entity += `_0`;
+        }
+        else
+        {
+            entity += `_${variant.value}`;
+        }
+    }
+    else if (deadEntity.typeId == "minecraft:cow" || deadEntity.typeId == "minecraft:chicken" || deadEntity.typeId == "minecraft:pig") {
+        const variant = deadEntity.getProperty('minecraft:climate_variant');
+        entity += `_${variant}`;
+    }
+
+    return entity;
+}
 
 /* 
     Block Rotation
@@ -245,11 +319,16 @@ const RotationBlockComponent = {
     }
 };
 
+world.beforeEvents.worldInitialize.subscribe(({ blockComponentRegistry }) => {
+    blockComponentRegistry.registerCustomComponent("vmh:rotation_comp", RotationBlockComponent);
+});
+
+
 /* 
     Noteblock Functionality
 */
 
-//Redstone power
+// Redstone power
 world.beforeEvents.worldInitialize.subscribe(eventData =>{eventData.blockComponentRegistry.registerCustomComponent('vmh:check_noteblock', {
     onTick(event) { 
     const block = event.block;
@@ -274,7 +353,7 @@ world.beforeEvents.worldInitialize.subscribe(eventData =>{eventData.blockCompone
 }
 })});
 
-//Noteblock interaction
+// Noteblock interaction
 world.afterEvents.playerInteractWithBlock.subscribe((eventData) => {
     const { player } = eventData;
     if (!player) return;
@@ -295,8 +374,4 @@ world.afterEvents.playerInteractWithBlock.subscribe((eventData) => {
           }
       }
     }
-});
-
-world.beforeEvents.worldInitialize.subscribe(({ blockComponentRegistry }) => {
-    blockComponentRegistry.registerCustomComponent("vmh:rotation_comp", RotationBlockComponent);
 });
