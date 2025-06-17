@@ -52,8 +52,8 @@
 							"uv": {
 								"north": {"uv": [2, 34], "uv_size": [2, 6]},
 								"east": {"uv": [4, 34], "uv_size": [2, 6]},
-								"south": {"uv": [6, 34], "uv_size": [2, 6]},
-								"west": {"uv": [0, 34], "uv_size": [2, 6]},
+								"south": {"uv": [8, 34], "uv_size": [-2, 6]},
+								"west": {"uv": [2, 34], "uv_size": [-2, 6]},
 								"up": {"uv": [4, 34], "uv_size": [-2, -2]},
 								"down": {"uv": [6, 34], "uv_size": [-2, -2], "material_instance": "custom_down"}
 							}
@@ -64,12 +64,12 @@
 							"pivot": [7.91667, 11.08333, 1.58333],
 							"rotation": [90, 0, 0],
 							"uv": {
-								"north": {"uv": [2, 42], "uv_size": [2, 6]},
-								"east": {"uv": [4, 42], "uv_size": [2, 6]},
-								"south": {"uv": [6, 42], "uv_size": [2, 6]},
-								"west": {"uv": [0, 42], "uv_size": [2, 6]},
-								"up": {"uv": [4, 42], "uv_size": [-2, -2]},
-								"down": {"uv": [6, 42], "uv_size": [-2, -2], "material_instance": "custom_down"}
+								"north": {"uv": [2, 34], "uv_size": [2, 6]},
+								"east": {"uv": [4, 34], "uv_size": [2, 6]},
+								"south": {"uv": [6, 34], "uv_size": [2, 6]},
+								"west": {"uv": [0, 34], "uv_size": [2, 6]},
+								"up": {"uv": [4, 34], "uv_size": [-2, -2]},
+								"down": {"uv": [6, 34], "uv_size": [-2, -2], "material_instance": "custom_down"}
 							}
 						}
 					]
