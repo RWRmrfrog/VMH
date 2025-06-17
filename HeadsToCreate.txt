@@ -184,6 +184,12 @@ fox_head
 Ghast
 mob.ghast.moan
 ghast_head
+Ghastling
+mob.ghastling.ambient
+ghastling_head
+Happy_Ghast
+mob.happy_ghast.ambient
+happy_ghast_head
 Glow_Squid
 mob.glow_squid.ambient
 squid_head

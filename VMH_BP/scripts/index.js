@@ -118,6 +118,9 @@ function modEntityName(deadEntity, entity) {
     else if (deadEntity.typeId == "minecraft:strider" && deadEntity.getComponent('is_shaking')) {
         entity = "suffocated_strider";
     }
+    else if (deadEntity.typeId == "minecraft:happy_ghast" && deadEntity.getComponent('is_baby')) {
+        entity = "ghastling";
+    }
     else if (deadEntity.typeId == "minecraft:sheep") {
         const color = deadEntity.getComponent('color');
         entity += `_${color.value}`;

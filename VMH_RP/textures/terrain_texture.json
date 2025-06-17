@@ -209,7 +209,10 @@
             "textures": "textures/entity/fox/fox"
         },
         "ghast_head": {
-            "textures": "textures/entity/ghast/ghast"
+            "textures": "textures/blocks/skulls/ghast/ghast"
+        },
+        "ghastling_head": {
+            "textures": "textures/blocks/skulls/ghast/ghastling"
         },
         "glow_squid_head": {
             "textures": "textures/blocks/skulls/glow_squid"
@@ -240,6 +243,9 @@
         },
         "guardian_head": {
             "textures": "textures/entity/guardian"
+        },
+        "happy_ghast_head": {
+            "textures": "textures/blocks/skulls/ghast/happy_ghast"
         },
         "hoglin_head": {
             "textures": "textures/entity/hoglin/hoglin"
