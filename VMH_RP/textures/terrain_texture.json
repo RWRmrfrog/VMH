@@ -64,6 +64,9 @@
         "black_rabbit_head": {
             "textures": "textures/entity/rabbit/blackrabbit"
         },
+        "black_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/black_sheep"
+        },
         "black_wolf_head": {
             "textures": "textures/entity/wolf/wolf_black"
         },
@@ -76,14 +79,20 @@
         "blue_parrot_head": {
             "textures": "textures/entity/parrot/parrot_blue"
         },
+        "blue_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/blue_sheep"
+        },
         "blue_wither_head": {
-            "textures": "textures/blocks/skulls/wither/blue_wither"
+            "textures": "textures/entity/wither_boss/wither_invulnerable"
         },
         "blue_wither_projectile_head": {
-            "textures": "textures/blocks/skulls/wither/blue_wither_projectile"
+            "textures": "textures/entity/wither_boss/wither_invulnerable"
         },
         "bogged_head": {
-            "textures": "textures/blocks/skulls/skeleton/bogged"
+            "textures": "textures/entity/skeleton/bogged"
+        },
+        "bogged_head_outer": {
+            "textures": "textures/entity/skeleton/bogged_clothes"
         },
         "breeze_head": {
             "textures": "textures/entity/breeze/breeze"
@@ -106,6 +115,9 @@
         "brown_rabbit_head": {
             "textures": "textures/entity/rabbit/brown"
         },
+        "brown_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/brown_sheep"
+        },
         "calico_cat_head": {
             "textures": "textures/entity/cat/calico"
         },
@@ -114,6 +126,12 @@
         },
         "cave_spider_head": {
             "textures": "textures/blocks/skulls/spider/cave_spider"
+        },
+        "charged_armor": {
+            "textures": "textures/blocks/skulls/creeper/creeper_armor"
+        },
+        "charged_creeper_head": {
+            "textures": "textures/blocks/skulls/creeper/creeper"
         },
         "chestnut_horse_head": {
             "textures": "textures/entity/horse2/horse_chestnut"
@@ -156,6 +174,9 @@
         },
         "cyan_parrot_head": {
             "textures": "textures/entity/parrot/parrot_yellow_blue"
+        },
+        "cyan_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/cyan_sheep"
         },
         "dark_brown_horse_head": {
             "textures": "textures/entity/horse2/horse_darkbrown"
@@ -208,8 +229,14 @@
         "gray_parrot_head": {
             "textures": "textures/entity/parrot/parrot_grey"
         },
+        "gray_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/gray_sheep"
+        },
         "green_parrot_head": {
             "textures": "textures/entity/parrot/parrot_green"
+        },
+        "green_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/green_sheep"
         },
         "guardian_head": {
             "textures": "textures/entity/guardian"
@@ -229,8 +256,20 @@
         "lazy_panda_head": {
             "textures": "textures/entity/panda/panda_lazy"
         },
+        "light_blue_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/light_blue_sheep"
+        },
+        "light_gray_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/light_gray_sheep"
+        },
+        "lime_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/lime_sheep"
+        },
         "lucy_axolotl_head": {
             "textures": "textures/entity/axolotl/axolotl_lucy"
+        },
+        "magenta_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/magenta_sheep"
         },
         "magma_cube_head": {
             "textures": "textures/blocks/skulls/magma_cube"
@@ -243,6 +282,9 @@
         },
         "ocelot_head": {
             "textures": "textures/entity/cat/ocelot"
+        },
+        "orange_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/orange_sheep"
         },
         "pale_wolf_head": {
             "textures": "textures/entity/wolf/wolf"
@@ -265,6 +307,9 @@
         "pillager_head": {
             "textures": "textures/entity/pillager"
         },
+        "pink_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/pink_sheep"
+        },
         "playful_panda_head": {
             "textures": "textures/entity/panda/panda_playful"
         },
@@ -273,6 +318,9 @@
         },
         "pufferfish_head": {
             "textures": "textures/entity/fish/pufferfish"
+        },
+        "purple_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/purple_sheep"
         },
         "ragdoll_cat_head": {
             "textures": "textures/entity/cat/ragdoll"
@@ -285,6 +333,9 @@
         },
         "red_parrot_head": {
             "textures": "textures/entity/parrot/parrot_red_blue"
+        },
+        "red_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/red_sheep"
         },
         "rusty_wolf_head": {
             "textures": "textures/entity/wolf/wolf_rusty"
@@ -311,13 +362,13 @@
             "textures": "textures/entity/horse2/horse_skeleton"
         },
         "slime_head": {
-            "textures": "textures/blocks/skulls/slime"
+            "textures": "textures/entity/slime/slime"
         },
         "sniffer_head": {
             "textures": "textures/entity/sniffer/sniffer"
         },
         "snow_golem_head": {
-            "textures": "textures/blocks/skulls/snow_golem"
+            "textures": "textures/entity/snow_golem"
         },
         "snowy_wolf_head": {
             "textures": "textures/entity/wolf/wolf_snowy"
@@ -335,7 +386,10 @@
             "textures": "textures/entity/squid"
         },
         "stray_head": {
-            "textures": "textures/blocks/skulls/skeleton/stray"
+            "textures": "textures/entity/skeleton/stray"
+        },
+        "stray_head_outer": {
+            "textures": "textures/entity/skeleton/stray_overlay"
         },
         "strider_head": {
             "textures": "textures/blocks/skulls/strider/strider"
@@ -413,16 +467,19 @@
             "textures": "textures/blocks/skulls/witch"
         },
         "wither_head": {
-            "textures": "textures/blocks/skulls/wither/wither"
+            "textures": "textures/entity/wither_boss/wither"
         },
         "wither_projectile_head": {
-            "textures": "textures/blocks/skulls/wither/wither_projectile"
+            "textures": "textures/entity/wither_boss/wither"
         },
         "woods_wolf_head": {
             "textures": "textures/entity/wolf/wolf_woods"
         },
         "worried_panda_head": {
             "textures": "textures/entity/panda/panda_worried"
+        },
+        "yellow_sheep_head": {
+            "textures": "textures/blocks/skulls/sheep/yellow_sheep"
         },
         "zoglin_head": {
             "textures": "textures/entity/zoglin/zoglin"

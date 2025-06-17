@@ -48,7 +48,7 @@ TEMPLATE_REGISTRY = {
     },
     "block": {
         "template": {
-            "format_version": "1.21.60",
+            "format_version": "1.21.80",
             "minecraft:block": {
                 "description": {
                     "identifier": "vmh:[lower custom name]_head_block",
@@ -130,16 +130,10 @@ TEMPLATE_REGISTRY = {
                             "texture": "[lower custom name]_head",
                             "ambient_occlusion": False,
                             "render_method": "alpha_test"
-                        },
-                        "custom_down": {
-                            "texture": "[lower custom name]_head",
-                            "ambient_occlusion": False,
-                            "render_method": "alpha_test"
-                        },
-                        "down": {
-                            "texture": "soul_sand",
-                            "render_method": "alpha_test"
                         }
+                    },
+                    "minecraft:destruction_particles": {
+                        "texture": "soul_sand"
                     },
                     "minecraft:light_dampening": 0,
                     "minecraft:placement_filter": {
@@ -452,7 +446,8 @@ def main():
         update_index_js(head_name, sound_name)
         create_json_from_template("items_rp", head_name)
         create_json_from_template("items_bp", head_name)
-        create_json_from_template("block", head_name, model_name)
+        if not (head_name == "Slime" or head_name == "Stray" or head_name == "Bogged" or head_name == "Charged_Creeper"):
+            create_json_from_template("block", head_name, model_name)
         update_lang_file(head_name)
         update_place_sounds(head_name)
         createRecipes(head_name)

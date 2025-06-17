@@ -1,0 +1,7 @@
+[
+    {
+        "atlas_tile": "charged_armor",
+        "flipbook_texture": "textures/blocks/skulls/creeper/creeper_armor",
+        "ticks_per_frame": 10
+    }
+]

@@ -8,11 +8,11 @@
                 "enchanted": "armor_enchanted"
             },
             "textures": {
-                "default": "textures/blocks/skulls/wither/blue_wither_projectile",
+                "default": "textures/entity/wither_boss/wither_invulnerable",
                 "enchanted": "textures/misc/enchanted_item_glint"
             },
             "geometry": {
-                "default": "geometry.head_attachable"
+                "default": "geometry.wither_projectile_head_attachable"
             },
             "render_controllers": [
                 "controller.render.item_default"

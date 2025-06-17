@@ -29,7 +29,7 @@
 								"south": {"uv": [36, 42], "uv_size": [16, 16]},
 								"west": {"uv": [26, 42], "uv_size": [10, 16]},
 								"up": {"uv": [10, 32], "uv_size": [16, 10]},
-								"down": {"uv": [26, 42], "uv_size": [16, -10], "material_instance": "custom_down"}
+								"down": {"uv": [26, 42], "uv_size": [16, -10]}
 							}
 						},
 						{
@@ -68,7 +68,7 @@
 								"south": {"uv": [36, 42], "uv_size": [16, 16]},
 								"west": {"uv": [26, 42], "uv_size": [10, 16]},
 								"up": {"uv": [10, 32], "uv_size": [16, 10]},
-								"down": {"uv": [26, 42], "uv_size": [16, -10], "material_instance": "custom_down"}
+								"down": {"uv": [26, 42], "uv_size": [16, -10]}
 							}
 						},
 						{
@@ -102,7 +102,7 @@
 								"south": {"uv": [36, 42], "uv_size": [16, 16]},
 								"west": {"uv": [26, 42], "uv_size": [10, 16]},
 								"up": {"uv": [10, 32], "uv_size": [16, 10]},
-								"down": {"uv": [26, 42], "uv_size": [16, -10], "material_instance": "custom_down"}
+								"down": {"uv": [26, 42], "uv_size": [16, -10]}
 							}
 						},
 						{
@@ -136,7 +136,7 @@
 								"south": {"uv": [36, 42], "uv_size": [16, 16]},
 								"west": {"uv": [26, 42], "uv_size": [10, 16]},
 								"up": {"uv": [10, 32], "uv_size": [16, 10]},
-								"down": {"uv": [26, 42], "uv_size": [16, -10], "material_instance": "custom_down"}
+								"down": {"uv": [26, 42], "uv_size": [16, -10]}
 							}
 						},
 						{
@@ -169,7 +169,7 @@
 								"south": {"uv": [36, 42], "uv_size": [16, 16]},
 								"west": {"uv": [26, 42], "uv_size": [10, 16]},
 								"up": {"uv": [10, 32], "uv_size": [16, 10]},
-								"down": {"uv": [26, 42], "uv_size": [16, -10], "material_instance": "custom_down"}
+								"down": {"uv": [26, 42], "uv_size": [16, -10]}
 							}
 						},
 						{
@@ -216,7 +216,8 @@
 					"translation": [0, 0, 0],
 					"scale": [1, 1, 1],
 					"rotation_pivot": [0, 0, 0],
-					"scale_pivot": [0, 0, 0]
+					"scale_pivot": [0, 0, 0],
+					"fit_to_frame": true
 				},
 				"fixed": {
 					"rotation": [0, 0, 0],
