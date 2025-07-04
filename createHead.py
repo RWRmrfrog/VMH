@@ -1,456 +1,273 @@
 import json
 import os
 import re
+import shutil
 
 # Template Registry (Mapping template types to their structures and paths)
 TEMPLATE_REGISTRY = {
     "items_rp": {
-        "template": {
-            "format_version": "1.10",
-            "minecraft:item": {
-                "description": {
-                    "identifier": "vmh:[lower custom name]_head_block",
-                    "category": "null"
-                },
-                "components": {
-                    "minecraft:rarity": "uncommon"
-                }
-            }
-        },
+        "template_file": "templates/items_rp.json",
         "file_path": "VMH_RP/items/[lower custom name]_head.json"
     },
     "items_bp": {
-       "template": {
-            "format_version": "1.21.40",
-            "minecraft:item": {
-                "description": {
-                    "identifier": "vmh:[lower custom name]_head",
-                    "menu_category": {
-                        "category": "items",
-                        "group": "itemGroup.name.skull"
-                    }
-                },
-                "components": {
-                    "minecraft:block_placer": {
-                        "block": "vmh:[lower custom name]_head_block"
-                    },
-                    "minecraft:max_stack_size": {
-                        "value": 1
-                    },
-                    "minecraft:wearable": {
-                        "slot": "slot.armor.head"
-                    },
-                    "minecraft:rarity": "uncommon"
-                }
-            }
-        },
+        "template_file": "templates/items_bp.json",
         "file_path": "VMH_BP/items/[lower custom name]_head.json"
     },
     "block": {
-        "template": {
-            "format_version": "1.21.80",
-            "minecraft:block": {
-                "description": {
-                    "identifier": "vmh:[lower custom name]_head_block",
-                    "menu_category": {
-                        "category": "none",
-                        "is_hidden_in_commands": True
-                    },
-                    "traits": {
-                        "minecraft:placement_position": {
-                            "enabled_states": [
-                                "minecraft:block_face"
-                            ]
-                        }
-                    },
-                    "states": {
-                        "vmh:head_rotation": {
-                            "values": {
-                                "min": 0,
-                                "max": 15
-                            }
-                        }
-                    }
-                },
-                "components": {
-                    "minecraft:liquid_detection": {
-                        "detection_rules": [
-                            {
-                                "can_contain_liquid": True
-                            }
-                        ]
-                    },
-                    "minecraft:destructible_by_mining": {
-                        "seconds_to_destroy": 1.5
-                    },
-                    "minecraft:collision_box": {
-                        "origin": [
-                            -4,
-                            0,
-                            -4
-                        ],
-                        "size": [
-                            8,
-                            8,
-                            8
-                        ]
-                    },
-                    "minecraft:selection_box": {
-                        "origin": [
-                            -4,
-                            0,
-                            -4
-                        ],
-                        "size": [
-                            8,
-                            8,
-                            8
-                        ]
-                    },
-                    "minecraft:geometry": {
-                        "identifier": "geometry.[custom model name]",
-                        "bone_visibility": {
-                            "up_0": "q.block_state('minecraft:block_face') == 'up' && math.mod(q.block_state('vmh:head_rotation'), 4) == 0",
-                            "up_22_5": "q.block_state('minecraft:block_face') == 'up' && math.mod(q.block_state('vmh:head_rotation'), 4) == 1",
-                            "up_45": "q.block_state('minecraft:block_face') == 'up' && math.mod(q.block_state('vmh:head_rotation'), 4) == 2",
-                            "up_67_5": "q.block_state('minecraft:block_face') == 'up' && math.mod(q.block_state('vmh:head_rotation'), 4) == 3",
-                            "side": "q.block_state('minecraft:block_face') != 'up'"
-                        }
-                    },
-                    "minecraft:custom_components": [
-                        "vmh:rotation_comp",
-                        "vmh:check_noteblock"
-                    ],
-                    "minecraft:tick": {
-                        "interval_range": [10, 20],
-                        "looping": True
-                    },
-                    "minecraft:material_instances": {
-                        "*": {
-                            "texture": "[lower custom name]_head",
-                            "ambient_occlusion": False,
-                            "render_method": "alpha_test"
-                        }
-                    },
-                    "minecraft:destruction_particles": {
-                        "texture": "soul_sand"
-                    },
-                    "minecraft:light_dampening": 0,
-                    "minecraft:placement_filter": {
-                        "conditions": [
-                            {
-                                "allowed_faces": [
-                                    "up",
-                                    "side"
-                                ]
-                            }
-                        ]
-                    }
-                },
-                "permutations": [
-                    {
-                        "condition": "q.block_state('vmh:head_rotation') >= 4 || q.block_state('minecraft:block_face') == 'east'",
-                        "components": {
-                            "minecraft:transformation": {
-                                "rotation": [
-                                    0,
-                                    -90,
-                                    0
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "condition": "q.block_state('vmh:head_rotation') >= 8 || q.block_state('minecraft:block_face') == 'south'",
-                        "components": {
-                            "minecraft:transformation": {
-                                "rotation": [
-                                    0,
-                                    180,
-                                    0
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "condition": "q.block_state('vmh:head_rotation') >= 12 || q.block_state('minecraft:block_face') == 'west'",
-                        "components": {
-                            "minecraft:transformation": {
-                                "rotation": [
-                                    0,
-                                    90,
-                                    0
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "condition": "q.block_state('minecraft:block_face') != 'up'",
-                        "components": {
-                            "minecraft:collision_box": {
-                                "origin": [
-                                    -4,
-                                    4,
-                                    0
-                                ],
-                                "size": [
-                                    8,
-                                    8,
-                                    8
-                                ]
-                            },
-                            "minecraft:selection_box": {
-                                "origin": [
-                                    -4,
-                                    4,
-                                    0
-                                ],
-                                "size": [
-                                    8,
-                                    8,
-                                    8
-                                ]
-                            }
-                        }
-                    }
-                ]
-            }
-        },
+        "template_file": "templates/block.json",
         "file_path": "VMH_BP/blocks/[lower custom name]_head.json"
     },
+    "recipe_toBlock": {
+        "template_file": "templates/recipe_toBlock.json",
+        "file_path": "VMH_BP/recipes/[lower custom name]_toBlock.json"
+    },
+    "recipe_toHead": {
+        "template_file": "templates/recipe_toHead.json",
+        "file_path": "VMH_BP/recipes/[lower custom name]_toHead.json"
+    },
+    "attachable": {
+        "template_file": "templates/attachable.json",
+        "file_path": "VMH_RP/attachables/[lower custom name]_head.json"
+    }
 }
-
-def setDataArgs(c, d):
-    args = {
-        "a": c,
-        "b": d
-    }
-
-    fileData = {
-        "format_version": "1.20.10",
-        "minecraft:recipe_shaped": {
-            "description": {
-                "identifier": "vmh:%s" %(args["a"])
-            },
-            "tags": [ 
-                "crafting_table" 
-            ],
-            "group": "itemGroup.name.skull",
-            "pattern": [
-                "#"
-            ],
-            "key": {
-                "#": {
-                    "item": "vmh:%s" %(args["b"])
-                }
-            },
-            "unlock": [
-                {
-                    "item": "vmh:%s" %(args["b"])
-                }
-            ],
-            "result": {
-                "item": "vmh:%s" %(args["a"]),
-                "count": 1
-            }
-        }
-    }
-
-    return fileData
-
-def createRecipes(headName):
-
-    lowerHeadName = headName.lower()
-
-    fileData = setDataArgs("%s_head" %(lowerHeadName), "%s_head_block" %(lowerHeadName))
-
-    recipeTypes = ["toHead", "toBlock"]
-    for recipeType in recipeTypes:
-        with open("VMH_BP/recipes/%s_%s.json" %(lowerHeadName, recipeType), "w") as file:
-            json_object = json.dumps(fileData, indent=4)
-            file.write(json_object)
-
-            fileData = setDataArgs("%s_head_block" %(lowerHeadName), "%s_head" %(lowerHeadName))
-
-
 def update_index_js(custom_name, sound):
     file_name = "VMH_BP/scripts/index.js"
     formatted_custom_name = custom_name.lower()
     formatted_sound = sound.lower()
 
-    # The new array element to append
     new_element = f'["vmh:{formatted_custom_name}_head", "vmh:{formatted_custom_name}_head_block", "{formatted_custom_name}_head", "{formatted_sound}"]'
 
     try:
-        # Read the existing content from the index.js file
         with open(file_name, "r") as file:
             content = file.read()
 
-        # Find the position of the headArray definition
         match = re.search(r"const headArray = \[.*?\];", content, re.DOTALL)
 
         if match:
-            # Extract the part before and after the array to append the new element
             before_array = content[:match.start()]
             after_array = content[match.end():]
 
-            # Append the new element inside the array
-            updated_array = f'const headArray = [\n    ' + match.group(0)[match.group(0).find('[')+1:match.group(0).rfind(']')].strip() + ',\n    ' + new_element + '\n];'
+            # Extract the existing array contents
+            existing_elements = match.group(0)[match.group(0).find('[')+1:match.group(0).rfind(']')].strip()
 
-            # Write the updated content back to the file
+            # Safely append the new element
+            if existing_elements:
+                updated_array = f'const headArray = [\n    {existing_elements},\n    {new_element}\n];'
+            else:
+                updated_array = f'const headArray = [\n    {new_element}\n];'
+
             with open(file_name, "w") as file:
                 file.write(before_array + updated_array + after_array)
 
             print(f"Added new element for {custom_name} with sound {sound} to {file_name}")
-
         else:
             print(f"Error: {file_name} does not contain the expected headArray definition.")
-    
+
     except FileNotFoundError:
         print(f"Error: {file_name} not found.")
     except Exception as e:
         print(f"An error occurred: {e}")
 
+def create_json_from_template(template_type, head_name, model_name=None, texture_path=None):
 
-def create_json_from_template(template_type, head_name, model_name = None):
-    """
-    Creates a JSON file from a template, customized with the provided head name and model name.
-
-    :param template_type: The type of template ("attachable", "item", "block", etc.).
-    :param head_name: The custom name for the head.
-    :param model_name: The custom model name (used for "attachable" templates).
-    """
     lower_head_name = head_name.lower()
 
-    # Check if the template type exists in the registry
     if template_type not in TEMPLATE_REGISTRY:
         print(f"Error: Invalid template type '{template_type}'.")
         return
 
-    # Retrieve the template and file path from the registry
-    template = TEMPLATE_REGISTRY[template_type]["template"]
-    file_path_template = TEMPLATE_REGISTRY[template_type]["file_path"]
+    template_info = TEMPLATE_REGISTRY[template_type]
+    file_path_template = template_info["file_path"]
+    template_path = template_info["template_file"]
 
-    # Replace placeholders in the template and file path
-    customized_template = json.loads(json.dumps(template).replace("[custom name]", head_name).replace("[lower custom name]",lower_head_name).replace("[custom model name]", model_name or ""))
+    # Load the template from file
+    try:
+        with open(template_path, 'r', encoding='utf-8') as f:
+            template = json.load(f)
+    except Exception as e:
+        print(f"Error loading template '{template_path}': {e}")
+        return
 
-    # Define the file path using the head name
-    file_name = file_path_template.replace("[lower custom name]", lower_head_name)
+    # Perform placeholder substitution
+    json_str = json.dumps(template)
+    json_str = json_str.replace("[custom name]", head_name)
+    json_str = json_str.replace("[lower custom name]", lower_head_name)
+    json_str = json_str.replace("[custom model name]", model_name or "")
+    json_str = json_str.replace("[texture path]", texture_path or "")
+    customized_template = json.loads(json_str)
 
-    # Create directories if they don't exist
+    file_name = file_path_template
+    file_name = file_name.replace("[lower custom name]", lower_head_name)
+
     os.makedirs(os.path.dirname(file_name), exist_ok=True)
 
-    # Write the customized template to the JSON file
     try:
-        with open(file_name, "w") as file:
+        with open(file_name, "w", encoding="utf-8") as file:
             json.dump(customized_template, file, indent=4)
-
         print(f"Successfully created {file_name} from the {template_type} template.")
-
     except IOError as e:
         print(f"Error writing file {file_name}: {e}")
 
-def update_json(file_name, key, update_data, nested_field=None):
-    """
-    General-purpose function to update a JSON file with new data.
 
-    :param file_name: Path to the JSON file.
-    :param key: The key to be added or updated in the JSON data.
-    :param update_data: The data to associate with the key.
-    :param nested_field: The nested field in the JSON where the update should be applied (optional).
-    """
-    try:
-        # Open the file and load the JSON
-        with open(file_name, "r") as file:
-            data = json.load(file)
+# Creates Texture Atlas
+def create_terrain_texture(head_names, head_textures):
+    file_name = "VMH_RP/textures/terrain_texture.json"
 
-        # Update the data
-        if nested_field:
-            if nested_field in data:
-                data[nested_field].update({key: update_data})
-            else:
-                print(f"Error: '{nested_field}' field not found in the JSON file.")
-                return
-        else:
-            data.update({key: update_data})
+    if len(head_names) != len(head_textures):
+        raise ValueError("head_names and texture_paths must be the same length")
 
-        # Write the updated JSON back to the file
-        with open(file_name, "w") as file:
-            json.dump(data, file, indent=4)
+    texture_data = {
+        f"{head.lower()}_head": {"textures": path}
+        for head, path in zip(head_names, head_textures)
+    }
+    texture_data.update({
+        "stray_head_overlay": {
+            "textures": "textures/entity/skeleton/stray_overlay"
+        },
+        "bogged_head_overlay": {
+            "textures": "textures/entity/skeleton/bogged_clothes"
+        },
+        "charged_creeper_head_overlay": {
+            "textures": "textures/blocks/skulls/creeper/creeper_armor"
+        }
+    })
 
-        print(f"Successfully updated {file_name} with key '{key}'.")
+    final_json = {
+        "num_mip_levels": 4,
+        "padding": 8,
+        "resource_pack_name": "vmh_head",
+        "texture_name": "atlas.terrain",
+        "texture_data": texture_data
+    }
 
-    except FileNotFoundError:
-        print(f"Error: {file_name} not found.")
-    except json.JSONDecodeError:
-        print(f"Error: Failed to parse {file_name} as JSON.")
+    with open(file_name, "w") as f:
+        json.dump(final_json, f, indent=4)
 
+    print(f"JSON file successfully written to '{file_name}'")
 
-def update_place_sounds(head_name):
-    """Updates the block placement sounds in the blocks.json file."""
-    lower_head_name = head_name.lower()
+# Creates Sounds File
+def create_place_sounds(head_names):
     file_name = "VMH_RP/blocks.json"
-    block_name = f"vmh:{lower_head_name}_head_block"
-    new_block = {"sound": "stone"}
 
-    update_json(file_name, block_name, new_block)
+    # Start with format version
+    data = {
+        "format_version": "1.21.40"
+    }
 
+    for head_name in head_names:
+        lower_head_name = head_name.lower()
+        block_name = f"vmh:{lower_head_name}_head_block"
+        data[block_name] = {"sound": "stone"}
 
-def update_lang_file(head_name):
-    file_name = "VMH_RP/texts/en_US.lang"
-    lower_head_name = head_name.lower()
-
-    # Define the lines to add
-    block_name = f"tile.vmh:{lower_head_name}_head_block.name={head_name.replace("_", " ")} Head"
-    item_name = f"item.vmh:{lower_head_name}_head={head_name.replace("_", " ")} Head"
-    lines_to_add = [block_name, item_name]
+    os.makedirs(os.path.dirname(file_name), exist_ok=True)
 
     try:
-        with open(file_name, "a") as file:
-            file.write("\n".join(lines_to_add) + "\n")
+        with open(file_name, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
+        print(f"Successfully created {file_name} with block sounds.")
+    except Exception as e:
+        print(f"Error writing {file_name}: {e}")
 
-    except FileNotFoundError:
-        print(f"Error: {file_name} not found.")
+
+# Creates the Language File
+def create_lang_file(all_head_names):
+    file_name = "VMH_RP/texts/en_US.lang"
+    lines = []
+
+    for head_name in all_head_names:
+        lower_head_name = head_name.lower()
+        display_name = head_name.replace("_", " ") + " Head"
+
+        block_line = f"tile.vmh:{lower_head_name}_head_block.name={display_name}"
+        item_line = f"item.vmh:{lower_head_name}_head={display_name}"
+
+        lines.extend([block_line, item_line])
+
+    os.makedirs(os.path.dirname(file_name), exist_ok=True)
+
+    try:
+        with open(file_name, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
+        print(f"Successfully created {file_name} with language entries.")
+    except Exception as e:
+        print(f"Error writing {file_name}: {e}")
 
 
-def parse_player_data(file_path):
-    players = {}
+# Creates RP and BP Folders
+def copy_folder(source_folder, destination_folder):
+    if not os.path.exists(source_folder):
+        print(f"Source folder does not exist: {source_folder}")
+        return
+
+    os.makedirs(destination_folder, exist_ok=True)
+
+    for item in os.listdir(source_folder):
+        src_path = os.path.join(source_folder, item)
+        dst_path = os.path.join(destination_folder, item)
+
+        if os.path.isdir(src_path):
+            shutil.copytree(src_path, dst_path, dirs_exist_ok=True)
+        else:
+            shutil.copy2(src_path, dst_path)
+
+    print(f"Copied '{source_folder}' to '{destination_folder}'")
+
+
+# Read Create Heads File
+def parse_entity_data(file_path):
+    entities = {}
     
     with open(file_path, 'r', encoding='utf-8') as file:
         lines = [line.strip() for line in file if line.strip()]
     
     i = 0
     while i < len(lines):
-        player_name = lines[i]
-        player_sound = lines[i+1] if i+1 < len(lines) else "n"
-        player_model = lines[i+2] if i+2 < len(lines) else "n"
+        entity_name = lines[i]
+        entity_sound = lines[i+1] if i+1 < len(lines) else "n"
+        entity_model = lines[i+2] if i+2 < len(lines) else "n"
+        entity_texture = lines[i+3] if i+3 < len(lines) else "n"
         
-        players[player_name] = {
-            "sound": player_sound if player_sound != "n" else None,
-            "model": player_model if player_model != "n" else None
+        entities[entity_name] = {
+            "sound": entity_sound if entity_sound != "n" else None,
+            "model": entity_model if entity_model != "n" else None,
+            "texture": entity_texture if entity_texture != "n" else None,
         }
         
-        i += 3
+        i += 4
     
-    return players
+    return entities
 
 
 def main():
+    copy_folder("templates/VMH_RP", "VMH_RP")
+    copy_folder("templates/VMH_BP", "VMH_BP")
+
     file_path = "HeadsToCreate.txt"
-    player_data = parse_player_data(file_path)
-    
-    for head_name, data in player_data.items():
+    entity_data = parse_entity_data(file_path)
+    head_names = []
+    head_textures = []
+
+    for head_name, data in entity_data.items():
         sound_name = data["sound"] if data["sound"] else "default"
         model_name = data["model"] if data["model"] else "head"
+        texture_path = data["texture"] if data["texture"] else "textures/blocks/skulls/missing"
 
         update_index_js(head_name, sound_name)
         create_json_from_template("items_rp", head_name)
         create_json_from_template("items_bp", head_name)
-        if not (head_name == "Slime" or head_name == "Stray" or head_name == "Bogged" or head_name == "Charged_Creeper"):
+        create_json_from_template("recipe_toBlock", head_name)
+        create_json_from_template("recipe_toHead", head_name)
+
+        if head_name not in {"Slime", "Charged_Creeper", "Bogged", "Stray"}:
             create_json_from_template("block", head_name, model_name)
-        update_lang_file(head_name)
-        update_place_sounds(head_name)
-        createRecipes(head_name)
+            create_json_from_template("attachable", head_name, model_name, texture_path)
+
+        head_names.append(head_name)
+        head_textures.append(texture_path)
+
+    create_place_sounds(head_names)
+    create_lang_file(head_names)
+    create_terrain_texture(head_names, head_textures)
 
 if __name__ == "__main__":
     main()

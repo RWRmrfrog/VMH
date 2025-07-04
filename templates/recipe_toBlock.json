@@ -1,0 +1,29 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "vmh:[lower custom name]_head_block"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "group": "itemGroup.name.skull",
+        "pattern": [
+            "#"
+        ],
+        "key": {
+            "#": {
+                "item": "vmh:[lower custom name]_head"
+            }
+        },
+        "unlock": [
+            {
+                "item": "vmh:[lower custom name]_head"
+            }
+        ],
+        "result": {
+            "item": "vmh:[lower custom name]_head_block",
+            "count": 1
+        }
+    }
+}
