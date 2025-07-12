@@ -90,10 +90,13 @@ world.afterEvents.entityDie.subscribe((event) => {
 
     // Drop 100% rate if killed by charged creeper
 
-    if (chargedCreepers.has(damagingEntity.id))
+    if (damagingEntity.id != "undefined")
     {
-        chargedCreepers.delete(damagingEntity.id);  
-        tableLocation = "vmh_creeper";
+        if (chargedCreepers.has(damagingEntity.id))
+        {
+            chargedCreepers.delete(damagingEntity.id);  
+            tableLocation = "vmh_creeper";
+        }
     }
 
     if (!(tableLocation == "vmh_creeper" && vanillaHeads.includes(deadEntity.typeId)))
