@@ -1,4 +1,4 @@
-import { world, system, ItemStack } from "@minecraft/server";
+import { world, system} from "@minecraft/server";
 
 /* 
     Arrays
@@ -17,7 +17,9 @@ const blacklistMobs = [
     "minecraft:xp_bottle",
     "minecraft:fireball",
     "minecraft:dragon_fireball",
-    "minecraft:egg"
+    "minecraft:egg",
+    "minecraft:creaking",
+    "minecraft:wither"
 ];
 const variantMobs = [
     "minecraft:wolf",
@@ -43,9 +45,9 @@ const vanillaHeads = [
 ];
 const headArray = [];
 
-function runCommand(command) {
+function runCommand(command, dimension) {
     system.run(() => {
-        world.getDimension("overworld").runCommand(command);
+        dimension.runCommand(command);
     });
 }
 
@@ -54,30 +56,34 @@ function runCommand(command) {
 */
 
 world.beforeEvents.entityRemove.subscribe(({ removedEntity }) => {
-    if (removedEntity.typeId == "minecraft:creeper" && removedEntity.getComponent('is_charged')) 
-    {
+    if (removedEntity.typeId == "minecraft:creeper" && removedEntity.getComponent("minecraft:is_charged")) {
         chargedCreepers.set(removedEntity.id, true);
-    } 
+    }
     if (removedEntity.typeId === "minecraft:creaking") {
-        const {x, y, z} = removedEntity.location;
+        const { x, y, z } = removedEntity.location;
         const command = `loot spawn ${x} ${y} ${z} loot \"vmh_looting/creaking\"`;
-        runCommand(command);
+        runCommand(command, removedEntity.dimension);
+    }
+    else if (removedEntity.typeId === "minecraft:wither") {
+        const { x, y, z } = removedEntity.location;
+        const command = `loot spawn ${x} ${y} ${z} loot \"vmh_looting/wither\"`;
+        runCommand(command, removedEntity.dimension);
     }
 })
 
-world.afterEvents.entityHurt.subscribe((event) => {
-    const {hurtEntity, damageSource, damage} = event;
-    if ((hurtEntity.typeId == "minecraft:wolf" || hurtEntity.typeId == "minecraft:bee") && hurtEntity.getComponent("health").currentValue >= damage && damageSource.damagingEntity.typeId == "minecraft:player") {
+world.afterEvents.entityHurt.subscribe(({ hurtEntity, damageSource, damage }) => {
+    const health = hurtEntity.getComponent("minecraft:health");
+    if ((hurtEntity.typeId === "minecraft:wolf" || hurtEntity.typeId === "minecraft:bee") && health.currentValue >= damage && damageSource.damagingEntity?.typeId === "minecraft:player") {
         AngryMobs.set(hurtEntity.id, true);
-    } 
-})
+    }
+});
 
 /* 
     Mobs Drop Heads
 */
 
 world.afterEvents.entityDie.subscribe((event) => {
-    const {damageSource, deadEntity} = event;
+    const { damageSource, deadEntity } = event;
     const damagingEntity = damageSource.damagingEntity;
 
     if (blacklistMobs.includes(deadEntity.typeId)) { return; };
@@ -90,45 +96,40 @@ world.afterEvents.entityDie.subscribe((event) => {
 
     // Drop 100% rate if killed by charged creeper
 
-    if (damagingEntity.id != "undefined")
-    {
-        if (chargedCreepers.has(damagingEntity.id))
-        {
-            chargedCreepers.delete(damagingEntity.id);  
-            tableLocation = "vmh_creeper";
-        }
+    if (chargedCreepers.has(damagingEntity.id)) {
+        chargedCreepers.delete(damagingEntity.id);
+        tableLocation = "vmh_creeper";
     }
 
-    if (!(tableLocation == "vmh_creeper" && vanillaHeads.includes(deadEntity.typeId)))
-    {
-        const {x, y, z} = deadEntity.location;
+    if (!(tableLocation == "vmh_creeper" && vanillaHeads.includes(deadEntity.typeId))) {
+        const { x, y, z } = deadEntity.location;
         const command = `loot spawn ${x} ${y + 0.5} ${z} loot \"${tableLocation}/${entity}\"`;
-        runCommand(command);
+        runCommand(command, deadEntity.dimension);
 
         // console.warn(`${command}`);
     }
 });
 
 function modEntityName(deadEntity, entity) {
-    if (deadEntity.typeId == "minecraft:creeper" && deadEntity.getComponent('is_charged')) {
+    if (deadEntity.typeId === "minecraft:creeper" && deadEntity.getComponent("minecraft:is_charged")) {
         entity = "charged_creeper";
-    }
-    else if (deadEntity.typeId == "minecraft:trader_llama") {
+    } 
+    else if (deadEntity.typeId === "minecraft:trader_llama") {
         entity = "llama";
-    }
-    else if (deadEntity.typeId == "minecraft:strider" && deadEntity.getComponent('is_shaking')) {
+    } 
+    else if (deadEntity.typeId === "minecraft:strider" && deadEntity.getComponent("minecraft:is_shaking")) {
         entity = "suffocated_strider";
     }
-    else if (deadEntity.typeId == "minecraft:happy_ghast" && deadEntity.getComponent('is_baby')) {
+    else if (deadEntity.typeId === "minecraft:happy_ghast" && deadEntity.getComponent("minecraft:is_baby")) {
         entity = "ghastling";
-    }
-    else if (deadEntity.typeId == "minecraft:sheep") {
-        const color = deadEntity.getComponent('color');
-        entity += `_${color.value}`;
+    } 
+    else if (deadEntity.typeId === "minecraft:sheep") {
+        const color = deadEntity.getComponent("minecraft:color");
+        if (color) entity += `_${color.value}`;
     }
 
     // Add Angry
-    
+
     if (AngryMobs.has(deadEntity.id)) {
         AngryMobs.delete(deadEntity.id);
         entity = "angry_" + entity;
@@ -138,18 +139,20 @@ function modEntityName(deadEntity, entity) {
 
     if (variantMobs.includes(deadEntity.typeId)) {
         const variant = deadEntity.getComponent('variant');
-        if (!variant)
-        {
+        if (!variant) {
             entity += `_0`;
         }
-        else
-        {
+        else {
             entity += `_${variant.value}`;
         }
     }
     else if (deadEntity.typeId == "minecraft:cow" || deadEntity.typeId == "minecraft:chicken" || deadEntity.typeId == "minecraft:pig") {
         const variant = deadEntity.getProperty('minecraft:climate_variant');
         entity += `_${variant}`;
+    }
+    else if (deadEntity.typeId == "minecraft:copper_golem") {
+        const oxidation_level = deadEntity.getProperty('minecraft:oxidation_level');
+        entity += `_${oxidation_level}`;
     }
 
     return entity;
@@ -181,8 +184,8 @@ const RotationBlockComponent = {
     }
 };
 
-world.beforeEvents.worldInitialize.subscribe(({ blockComponentRegistry }) => {
-    blockComponentRegistry.registerCustomComponent("vmh:rotation_comp", RotationBlockComponent);
+system.beforeEvents.startup.subscribe((initEvent) => {
+    initEvent.blockComponentRegistry.registerCustomComponent("vmh:rotation_comp", RotationBlockComponent);
 });
 
 
@@ -191,49 +194,50 @@ world.beforeEvents.worldInitialize.subscribe(({ blockComponentRegistry }) => {
 */
 
 // Redstone power
-world.beforeEvents.worldInitialize.subscribe(eventData =>{eventData.blockComponentRegistry.registerCustomComponent('vmh:check_noteblock', {
-    onTick(event) { 
-    const block = event.block;
-    const blockBelow = block.below();
-    const currentRedstonePower = blockBelow.getRedstonePower();
-    const { x, y, z } = blockBelow.location
-    const blockKey = `${x}*${y}*${z}`
-    const blockObject = blockMap.get(blockKey) ?? {};
-    const { previousRedstonePower } = blockObject;
+system.beforeEvents.startup.subscribe(eventData => {
+    eventData.blockComponentRegistry.registerCustomComponent('vmh:check_noteblock', {
+        onTick(event) {
+            const block = event.block;
+            const blockBelow = block.below();
+            const currentRedstonePower = blockBelow.getRedstonePower();
+            const { x, y, z } = blockBelow.location
+            const blockKey = `${x}*${y}*${z}`
+            const blockObject = blockMap.get(blockKey) ?? {};
+            const { previousRedstonePower } = blockObject;
 
-    if (blockBelow.typeId == "minecraft:noteblock" && currentRedstonePower > 0 && currentRedstonePower != previousRedstonePower) {
-        const location = blockBelow.location;
-        for (let i = 0; i < headArray.length; i++) {
-            if (block.typeId == headArray[i][1]) {
-                world.playSound(headArray[i][3], location)
-                break;
+            if (blockBelow.typeId == "minecraft:noteblock" && currentRedstonePower > 0 && currentRedstonePower != previousRedstonePower) {
+                const location = blockBelow.location;
+                for (let i = 0; i < headArray.length; i++) {
+                    if (block.typeId == headArray[i][1]) {
+                        world.playSound(headArray[i][3], location)
+                        break;
+                    }
+                }
             }
+            blockObject.previousRedstonePower = currentRedstonePower;
+            blockMap.set(blockKey, blockObject)
         }
-    }
-    blockObject.previousRedstonePower = currentRedstonePower;
-    blockMap.set(blockKey, blockObject)
-}
-})});
+    })
+});
 
 // Noteblock interaction
 world.afterEvents.playerInteractWithBlock.subscribe((eventData) => {
     const { player } = eventData;
     if (!player) return;
 
-    const item = player.getComponent('equippable')?.getEquipment('Mainhand');
+    const item = player.getComponent('minecraft:equippable')?.getEquipment('Mainhand');
 
-    if(!(player.isSneaking))
-    {
-      const block = eventData.block;
-      const blockAbove = block.dimension.getBlock({ x: block.location.x, y: (block.location.y) + 1, z: block.location.z });
-      if (block.typeId == "minecraft:noteblock") {
-          const location = block.location;
-          for (let i = 0; i < headArray.length; i++) {
-              if (blockAbove.typeId == headArray[i][1]) {
-                  world.playSound(headArray[i][3], location)
-                  break;
-              }
-          }
-      }
+    if (!(player.isSneaking)) {
+        const block = eventData.block;
+        const dimension = block.dimension;
+        const blockAbove = block.dimension.getBlock({ x: block.location.x, y: (block.location.y) + 1, z: block.location.z });
+        if (block.typeId == "minecraft:noteblock") {
+            for (let i = 0; i < headArray.length; i++) {
+                if (blockAbove.typeId == headArray[i][1]) {
+                    dimension.playSound(headArray[i][3], block.location);
+                    break;
+                }
+            }
+        }
     }
 });
