@@ -1,0 +1,1 @@
+-Thanks so much to crstalli for fixing redstone powered note block sounds!
