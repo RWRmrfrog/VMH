@@ -1,7 +1,4 @@
--merge
--donkey model
--new wearable models
+-new attachable models
 -mounts of mayhem
 -tiny takeover
--update scripts
 -drop rate change

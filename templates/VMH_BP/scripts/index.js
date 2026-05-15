@@ -66,7 +66,20 @@ world.beforeEvents.entityRemove.subscribe(({ removedEntity }) => {
     }
     else if (removedEntity.typeId === "minecraft:wither") {
         const { x, y, z } = removedEntity.location;
-        const command = `loot spawn ${x} ${y} ${z} loot \"vmh_looting/wither\"`;
+
+        const lootTables = [
+            "vmh_looting/wither",
+            "vmh_looting/wither_projectile",
+            "vmh_looting/blue_wither",
+            "vmh_looting/blue_wither_projectile"
+        ];
+
+        // Pick a random loot table
+        const randomLoot =
+            lootTables[Math.floor(Math.random() * lootTables.length)];
+
+        const command = `loot spawn ${x} ${y} ${z} loot "${randomLoot}"`;
+
         runCommand(command, removedEntity.dimension);
     }
 })
@@ -113,16 +126,16 @@ world.afterEvents.entityDie.subscribe((event) => {
 function modEntityName(deadEntity, entity) {
     if (deadEntity.typeId === "minecraft:creeper" && deadEntity.getComponent("minecraft:is_charged")) {
         entity = "charged_creeper";
-    } 
+    }
     else if (deadEntity.typeId === "minecraft:trader_llama") {
         entity = "llama";
-    } 
+    }
     else if (deadEntity.typeId === "minecraft:strider" && deadEntity.getComponent("minecraft:is_shaking")) {
         entity = "suffocated_strider";
     }
     else if (deadEntity.typeId === "minecraft:happy_ghast" && deadEntity.getComponent("minecraft:is_baby")) {
         entity = "ghastling";
-    } 
+    }
     else if (deadEntity.typeId === "minecraft:sheep") {
         const color = deadEntity.getComponent("minecraft:color");
         if (color) entity += `_${color.value}`;
