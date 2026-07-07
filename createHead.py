@@ -29,7 +29,7 @@ HEADS_CSV = "HeadsToCreate.csv"
 # Heads that ship with fully hand-crafted block/attachable files inside
 # the templates folder.  The generator skips auto-creating those file
 # types for these names so the hand-crafted versions stay intact.
-SPECIAL_HEADS = {"Slime", "Charged_Creeper", "Bogged", "Stray"}
+SPECIAL_HEADS = {"Slime", "Charged_Creeper", "Bogged", "Stray", "Sulfur_Cube"}
 
 # Default values used when a CSV column is blank
 DEFAULTS = {
@@ -331,6 +331,9 @@ def create_terrain_texture(head_names, head_textures):
         },
         "charged_creeper_head_overlay": {
             "textures": "textures/blocks/skulls/creeper/creeper_armor"
+        },
+        "sulfur_cube_head_inner": {
+            "textures": "textures/entity/sulfur_cube/sulfur_cube_inner"
         },
     })
 
