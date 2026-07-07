@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.80",
+    "format_version": "1.26.0",
     "minecraft:block": {
         "description": {
             "identifier": "vmh:stray_head_block",
@@ -68,10 +68,14 @@
                     "side": "q.block_state('minecraft:block_face') != 'up'"
                 }
             },
-            "minecraft:custom_components": [
-                "vmh:rotation_comp",
-                "vmh:check_noteblock"
-            ],
+            "vmh:rotation_comp": {},
+            "vmh:check_noteblock": {},
+            "minecraft:movable": {
+                "movement_type": "popped"
+            },
+            "minecraft:connection_rule": {
+                "accepts_connections_from": "none"
+            },
             "minecraft:tick": {
                 "interval_range": [
                     10,

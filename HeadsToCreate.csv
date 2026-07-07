@@ -166,8 +166,8 @@ Weathered_Copper_Golem,mob.copper_golem.weathered.spin,copper_golem_head,texture
 Oxidized_Copper_Golem,mob.copper_golem.oxidized.spin,copper_golem_head,textures/entity/copper_golem/copper_golem_oxidized,0.025,0.01,copper_golem_oxidized,0
 Camel_Husk,mob.camel_husk.ambient,camel_head,textures/entity/camel_husk/camel_husk,0.025,0.01,camel_husk,0
 Parched,mob.parched.ambient,parched_head,textures/entity/parched/parched,0.025,0.01,parched,0
-Nautilus,mob.nautilus.ambient,head32,textures/entity/nautilus/nautilus,0.025,0.01,nautilus,0
-Zombie_Nautilus,mob.zombie_nautilus.ambient,head32,textures/entity/nautilus/zombie_nautilus,0.025,0.01,zombie_nautilus,0
+Nautilus,mob.nautilus.ambient,nautilus_head,textures/entity/nautilus/nautilus,0.025,0.01,nautilus,0
+Zombie_Nautilus,mob.zombie_nautilus.ambient,nautilus_head,textures/entity/nautilus/zombie_nautilus,0.025,0.01,zombie_nautilus_default,0
 Zombie_Horse,mob.horse.zombie.idle,horse_head,textures/entity/horse2/horse_zombie,0.025,0.01,zombie_horse,0
-Coral_Zombie_Nautilus,mob.zombie_nautilus.ambient,head32,textures/entity/nautilus/zombie_nautilus_coral,0.025,0.01,zombie_nautilus_coral,0
+Coral_Zombie_Nautilus,mob.zombie_nautilus.ambient,nautilus_head,textures/entity/nautilus/zombie_nautilus_coral,0.025,0.01,zombie_nautilus_coral,0
 Sulfur_Cube,mob.sulfur_cube.jump,sulfur_cube_head,textures/entity/sulfur_cube/sulfur_cube_outer,0.025,0.01,sulfur_cube,0

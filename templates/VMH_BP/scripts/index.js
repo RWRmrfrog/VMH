@@ -167,6 +167,10 @@ function modEntityName(deadEntity, entity) {
         const oxidation_level = deadEntity.getProperty('minecraft:oxidation_level');
         entity += `_${oxidation_level}`;
     }
+    else if (deadEntity.typeId == "minecraft:zombie_nautilus") {
+        const variant = deadEntity.getProperty('minecraft:variant');
+        entity += `_${variant}`;
+    }
 
     return entity;
 }
